@@ -39,6 +39,11 @@ func main() {
 	// Добавляем middleware для CORS
 	r.Use(handlers.CORSMiddleware())
 
+	// Добавляем health check endpoint для Render
+	r.GET("/healthz", func(c *gin.Context) {
+		c.String(200, "OK")
+	})
+
 	// Создаем обработчик аутентификации
 	authHandler := handlers.NewAuthHandler(db, cfg)
 

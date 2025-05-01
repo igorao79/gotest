@@ -4,7 +4,6 @@ import {
   FaClipboardList, 
   FaCheckCircle, 
   FaBell, 
-  FaClock, 
   FaUser, 
   FaLock, 
   FaPlus,
@@ -18,7 +17,6 @@ import {
   FaCalendarAlt,
   FaInfoCircle,
   FaSignInAlt,
-  FaEdit,
   FaExchangeAlt
 } from 'react-icons/fa';
 import Logout from '../components/Logout';

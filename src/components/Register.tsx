@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/AuthForms.css';
-import { FaEnvelope, FaLock, FaShieldAlt, FaCheck } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaShieldAlt } from 'react-icons/fa';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState('');
