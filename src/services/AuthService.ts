@@ -18,7 +18,7 @@ interface PasswordChangeRequest {
 }
 
 class AuthService {
-  private apiUrl = 'http://localhost:8080/api';
+  private apiUrl = 'https://gotest.onrender.com/api';
 
   async login(email: string, password: string): Promise<LoginResponse> {
     const response = await fetch(`${this.apiUrl}/login`, {
