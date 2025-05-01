@@ -72,7 +72,7 @@ const Login: React.FC = () => {
       // Если пользователя нет в localStorage, пробуем запрос к серверу
       try {
         console.log('Отправка запроса на сервер');
-        const response = await fetch('http://localhost:8080/api/login', {
+        const response = await fetch('https://gotest.onrender.com/api/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
