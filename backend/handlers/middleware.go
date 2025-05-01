@@ -62,11 +62,22 @@ func JWTMiddleware(config *config.Configuration) gin.HandlerFunc {
 // CORSMiddleware создает middleware для обработки CORS
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "https://igorao79.github.io") // Адрес GitHub Pages
+		origin := c.Request.Header.Get("Origin")
+
+		// Принимаем запросы с GitHub Pages или локального окружения
+		if origin == "https://igorao79.github.io" ||
+			strings.HasPrefix(origin, "http://localhost") {
+			c.Writer.Header().Set("Access-Control-Allow-Origin", origin)
+		} else {
+			// В режиме разработки можно разрешить все домены
+			c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		}
+
 		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT, DELETE")
 
+		// Обработка preflight запросов
 		if c.Request.Method == "OPTIONS" {
 			c.AbortWithStatus(204)
 			return
